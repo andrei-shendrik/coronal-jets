@@ -1,0 +1,130 @@
+	Manual
+	
+	table
+	Event
+	stdatetime	    sttime   end datetime   xc  yc  lon   lat 
+	4/17/2019 8:15	8:15:08	4/17/2019 8:59	810	25	57.8  -1.4		
+	
+	HEK
+	https://www.lmsal.com/hek/her?cmd=view-voevent&ivorn=ivo://helio-informatics.org/CJ304_halocme_20190428_234646
+	2019-04-17T08:15:01 -> 2019-04-17T08:59:25
+	xcen, ycen = 810,25 
+	
+	
+	Data
+	/2019-04-17/RATAN/*.fits
+
+	OLD!!!!
+	20190417_075000_20190417_093000_750_100_666_666
+	Событие одно и тоже, но папки автомат обработки могут быть разные
+	
+
+file:
+./objects_m2/config.json
+	
+Content:
+	
+	"tstart":"2019-04-1708:07:00", //Время начала события
+    "tstop":"2019-04-1709:07:00", //Время конца события
+    "tref":"2019-04-1708:07:00",
+    "xc":810,
+    "yc":25,
+    "wpix":500,
+    "hpix":500,
+    "waves":[171,193,211],
+    "method":2,
+    "timeout":3,
+    "count":3,
+    "limit":30,
+    "timeout_post":5,
+    "count_post":3
+
+file:
+./objects_m2/'%длина_волны%.csv'
+
+Content:
+	T start					2019-04-17T08:27:04.843
+	T max 					2019-04-17T08:42:40.843 
+	T end 					2019-04-17T08:51:04.843 
+	# 						1 
+	Duration 				24'00" 
+	Max. cardinality 		3661 
+	Jet aspect ratio 		8.70 
+	Max. aspect ratio 		19.88 
+	LtoW aspect ratio 		9.92 
+	Speed est.			 	3. 
+	Total length 			309.4 
+	Av. Width 				31.2 
+	X from 					762.8 
+	X to 					813.9 
+	Y from 					4.8 
+	Y to 					136.3 
+	*/
+	
+
+file:
+./objects_m2/'%длина_волны%.sav' 
+//sav – детальная информация для внутреннего анализа
+
+./visual_data_m2
+	
+	171
+	20190417_080700_810_25_171.mp4
+	20190417_080700_810_25_171_detail0001.mp4
+	20190417_080700_810_25_171_detail0002.mp4
+	
+	193
+	
+	211
+	
+	20190417_080700_20190417_090700_810_25_500_500\visual_data_m2\171\detail0001
+	
+	table waves
+	Name Type Comment
+	UID uint32 Уникальный ID записи
+	Мain_UID uint32 ID записи в Main
+	Wave uint Длина волны									
+	MovieREF local path Общее видео события					 visual_data_m2/20190417_080700_810_25_171.mp4
+	PictREF local path Ссылка на каталог с картинками        visual_data_m2/171
+	FitsREF local path Ссылка на каталог со скачанными fits  /aia_data/171
+	
+	table details
+	Name Type Comment
+	UID uint32 Уникальный ID записи
+	Waves_UID uint32 ID записи в Waves
+	NDet uint Номер детали в событии
+	Comment String Комментарий (если есть - на странице детали?)
+	Tstart string (time) Время начала
+	Tmax string (time) Время максимума (макс. количества пикселей)
+	Tend string (time) Время конца
+	CardMax uint Макс. количество пикселей
+	AspJet double Вытянутость события в целом
+	AspMax double Максимальная вытянутость
+	TotalLength double Длина струи в целом
+	AvWidth double Оценка ширины струи
+	Speed double Оценка скорости
+	XFrom, XTo, 
+	YFrom, YTo
+	double 4 поля – координаты ограничивающего 
+	прямоугольника
+	MovieREF local path Видео детали						    /visual_data_m2/20190417_080700_810_25_171_detail0001.mp4
+	PictREF local path Ссылка на каталог с картинками			/visual_data_m2/171/detail0001
+	FitsREF local path Ссылка на каталог со скачанными fits 	/aia_data/171
+	SAVREF local path SAV-файл с найденными пикселями         	./objects_m2/'%длина_волны%.sav' 
+
+	20190417_080700_20190417_090700_810_25_500_500/aia_data/171/fullimage/AIA20190417_080657_0171.fits
+	20190417_080700_20190417_090700_810_25_500_500/aia_data/171/fullimage/AIA20190417_083657_0171.fits
+	20190417_080700_20190417_090700_810_25_500_500/aia_data/171/fullimage/AIA20190417_090657_0171.fits
+	
+	20190417_080700_20190417_090700_810_25_500_500/aia_data/171/aia.lev1_euv_12s_mod.2019-04-17T090522Z.3.image.fits
+	-- / --
+
+path
+
+structure
+/data/processing//
+20190417_080700_20190417_090700_810_25_500_500
+YYYYMMDD_HHMISS_YYYYMMDD_HHMISS_xc_yc_wpix_hpix 
+
+xc yc центр фрагмента
+wpix_hpix ширина и высота окна

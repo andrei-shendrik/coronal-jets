@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.sao.solar'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+/*    flatDir {
+        dirs 'lib'
+    }*/
+}
+
+dependencies {
+    // ctrl+space for suggestion
+    //implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.19.0'
+    //implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.19.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation fileTree(dir: 'lib', include: ['*.jar'])
+    implementation fileTree(dir: 'lib/xlsx', include: ['*.jar'])
+}
+
+/*jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.runtimeClasspath.files.collect { it.getName() }.join(' '),
+                'Main-Class': 'ru.sao.solar.coronaljets.catalog.DBfillApp'
+        )
+    }
+}*/
+
+/*tasks.jar {
+    manifest.attributes["Main-Class"] = "ru.sao.solar.coronaljets.catalog.DBfillApp"
+    *//*manifest.attributes["Class-Path"] = configurations
+            .runtimeClasspath
+            .get()
+            .joinToString(separator = " ") { file ->
+                "libs/${file.name}"
+            }*//*
+}*/
+/*jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ru.sao.solar.coronaljets.catalog.DBfillApp'
+        )
+    }
+}*/
+
+test {
+    useJUnitPlatform()
+}
